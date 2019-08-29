@@ -14,7 +14,9 @@ function TodoItem(props) {
           onChange={() => props.handleChange(props.td.id)}
           />
         <p style={ props.td.completed ? completedStyle : null }>{props.td.text}</p>
-        <button onClick={props.removeItemChange} style={{margin: "5px"}}>-</button>
+        <button onClick={() => props.removeItemChange(props.td.id)}
+                style={{margin: "5px", position: "absolute", right: "10px"}}>
+        -</button>
       </div>
   )
 }
