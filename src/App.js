@@ -60,6 +60,7 @@ class App extends Component {
                                                     key={item.id}
                                                     td={item}
                                                     handleChange={this.handleChange}
+                                                    removeItemChange={this.removeItemChange}
                                                   />)
 
 
@@ -68,7 +69,7 @@ class App extends Component {
           {tdItems}
           <div style={{display: "inline"}}>
               <button onClick={this.addItemChange} style={{margin: "5px"}}>+</button>
-              <button onClick={this.removeItemChange} style={{margin: "5px"}}>-</button>
+              <textarea style={{margin: "5px", position: "relative", top: "10px"}}> What do you have to do today?</textarea>
           </div>
 
       </div>
