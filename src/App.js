@@ -10,6 +10,8 @@ class App extends Component {
       todos: todoData
     }
     this.handleChange = this.handleChange.bind(this)
+    this.addItemChange = this.addItemChange.bind(this)
+    this.removeItemChange = this.removeItemChange.bind(this)
   }
 
   handleChange(id) {
@@ -26,6 +28,33 @@ class App extends Component {
     })
   }
 
+  addItemChange() {
+    this.setState(prevState => {
+      const newItem = {
+        id: prevState.length + 1,
+        text: "",
+        completed: false
+      }
+
+       const addTodo = [...prevState.todos]
+       addTodo.push(newItem)
+      return {
+        todos: addTodo
+      }
+    })
+  }
+
+  removeItemChange() {
+    this.setState(prevState => {
+       const removeTodo = [...prevState.todos]
+       removeTodo.pop()
+      return {
+        todos: removeTodo
+      }
+    })
+  }
+
+
   render() {
     const tdItems = this.state.todos.map(item => <TodoItem
                                                     key={item.id}
@@ -33,9 +62,15 @@ class App extends Component {
                                                     handleChange={this.handleChange}
                                                   />)
 
+
     return (
       <div className="todo-list">
           {tdItems}
+          <div style={{display: "inline"}}>
+              <button onClick={this.addItemChange} style={{margin: "5px"}}>+</button>
+              <button onClick={this.removeItemChange} style={{margin: "5px"}}>-</button>
+          </div>
+
       </div>
     )
   }
